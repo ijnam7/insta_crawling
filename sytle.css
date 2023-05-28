@@ -4,27 +4,25 @@ body {
 }
 
 .container {
-    background-color: #bbb;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 80px 50px 1fr;
-    gap: 10px;
+    grid-template-rows: 20% 15% 1fr;
     place-content: center;
 }
 
 h1 {
     align-self: center;
     text-align: center;
-    margin: 30px;
+    margin: 20%;
 }
 
 .search {
-    width: 90%;
-    position: relative;
+    display: grid;
+    align-content: center;
+    margin: 10px;
 }
 
 input {
-    width: 100%;
     border: 1px solid #bbb;
     border-radius: 30px;
     padding: 10px 12px;
@@ -42,13 +40,11 @@ th, td {
     text-align: center;
 }
 th {
-    background-color: darkgray;
-}
-td {
-    background-color: bisque;
+    background-color: gainsboro;
 }
 
 #map {
+    background-color: aquamarine;
     grid-column: 2/3;
     grid-row: 1/4;
     width:100%;
