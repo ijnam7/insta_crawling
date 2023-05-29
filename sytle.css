@@ -1,19 +1,24 @@
+@font-face {
+    font-family: "KoPubWorldDotum";
+    src: url("https://webfontworld.github.io/kopus/KoPubWorldDotum.css");
+}
+
 body {
+    font-family: "KoPubWorldDotum";
     margin: 0;
     box-sizing: border-box;
+    background-color: azure;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 20% 15% 1fr;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 15% 1fr;
     place-content: center;
 }
 
 h1 {
-    align-self: center;
     text-align: center;
-    margin: 20%;
 }
 
 .search {
@@ -40,7 +45,8 @@ th, td {
     text-align: center;
 }
 th {
-    background-color: gainsboro;
+    background-color: grey;
+    color: white;
 }
 
 #map {
@@ -48,9 +54,14 @@ th {
     grid-column: 2/3;
     grid-row: 1/4;
     width:100%;
-    height:500px;
+    height: 100vh;
+}
+
+.wordcloud {
+    grid-column: 2/3;
+    grid-row: 1/4;
 }
 
 .changeColor {
-    background-color: firebrick;
+    background-color: gainsboro;
 }
