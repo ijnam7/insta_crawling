@@ -27,8 +27,18 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>수성못</td>
-                <td>45%</td>
+                <td id="수성못" onclick="clickarea(id)">수성못</td>
+                <td>37%</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td id="동성로" onclick="clickarea(id)">동성로</td>
+                <td>24%</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td id="대봉동" onclick="clickarea(id)">대봉동</td>
+                <td>23%</td>
             </tr>
         </tbody>
     </table>
@@ -39,39 +49,69 @@
 </div>
 
 <script type="text/javascript"
-    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b257a2a39663828b84d6fb3f1018996a"></script>
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b257a2a39663828b84d6fb3f1018996a&libraries=services"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
     crossorigin="anonymous"></script>
 
 <script>
-
-function show_result(){
-    let reg = document.getElementById("region").value;
-    alert(reg);
-}
 var mapContainer = document.getElementById('map'), 
-mapOption = { 
-    center: new kakao.maps.LatLng(33.450701, 126.570667),
-    level: 3
-};
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
+    };
 
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-</script>
+var ps = new kakao.maps.services.Places();
 
-<script>
-    $(document).ready(function(){
-        changeColor();
-        clickTd();
-        clickTr();
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+        var bounds = new kakao.maps.LatLngBounds();
+    for (var i=0; i<data.length; i++) {
+        displayMarker(data[i]);    
+        bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+    }     
+    map.setBounds(bounds);
+    } 
+}
+
+function displayMarker(place) {
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x) 
+    });
+    kakao.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        infowindow.open(map, marker);
+    });
+}
+
+
+function clickarea(area) {
+    keyword = "대구시 "+area
+    ps.keywordSearch(keyword,placesSearchCB)
+}
+
+$(document).ready(function(){
+    changeColor();
+    clickTr();
+})
+function changeColor(){
+    $("#area_table tr").mouseover(function(){
+        $(this).addClass('changeColor');
+    }).mouseout(function(){
+        $(this).removeClass('changeColor');
     })
-    function changeColor(){
-        $("#area_table tr").mouseover(function(){
-            $(this).addClass('changeColor');
-        }).mouseout(function(){
-            $(this).removeClass('changeColor');
-        })
-    }
+}
+function clickTr(){
+    $("#arear_table tr").click(function(){
+        var text = $(this).text();
+    })
+    keyword = "대구시 "+""
+    ps.keywordSearch(keyword,placesSearchCB)
+}
+
 </script>
 
 </body>
