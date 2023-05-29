@@ -6,15 +6,33 @@
 body {
     font-family: "KoPubWorldDotum";
     margin: 0;
-    box-sizing: border-box;
-    background-color: azure;
 }
 
 .container {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 10% 15% 1fr;
     place-content: center;
+}
+
+.left {
+    margin: 50px;
+    display: grid;
+    grid-template-rows: 100px 50px 250px 1pt;
+}
+
+.right {
+    height: 100vh;
+}
+
+#map {
+    width:100%;
+    height: 100vh;
+}
+
+img {
+    display: grid;
+    place-self: center;
+    height: 200px;
 }
 
 h1 {
@@ -24,7 +42,6 @@ h1 {
 .search {
     display: grid;
     align-content: center;
-    margin: 10px;
 }
 
 input {
@@ -49,13 +66,6 @@ th {
     color: white;
 }
 
-#map {
-    background-color: aquamarine;
-    grid-column: 2/3;
-    grid-row: 1/4;
-    width:100%;
-    height: 100vh;
-}
 
 .wordcloud {
     grid-column: 2/3;
@@ -63,5 +73,6 @@ th {
 }
 
 .changeColor {
+    cursor: pointer;
     background-color: gainsboro;
 }

@@ -11,11 +11,13 @@
 
 <body>
 <div class="container">
+<div class="left">
 <h1 onclick="location.href='main.html'" style="cursor: pointer;">지역별 핫플 찾기</h1>
 <div class="search">
     <input type="text" id="region" placeholder="지역 입력"
     onkeypress="if(event.keyCode==13){show_result();}">
 </div>
+<img src="source/wordCloud.png" alt="wordcloud" id="wordcloud">
 <div>
     <table id="area_table">
         <thead>
@@ -44,11 +46,14 @@
         </tbody>
     </table>
 </div>
+</div>
 
-<div id="map" style="display: ;"></div>
-<img src="source/wordCloud.png" alt="wordCloud" id="wordCloud">
+<div class="right">
+    <div id="map" style="display: ;"></div>
+</div>
 
 </div>
+
 
 <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b257a2a39663828b84d6fb3f1018996a&libraries=services"></script>
