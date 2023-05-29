@@ -16,7 +16,7 @@
     <input type="text" id="region" placeholder="지역 입력" onkeypress="show_result()">
 </div>
 <div>
-    <table>
+    <table id="area_table">
         <thead>
             <tr>
                 <th style="width: 20%">순위</th>
@@ -57,7 +57,21 @@ mapOption = {
 };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+</script>
 
+<script>
+    $(document).ready(function(){
+        changeColor();
+        clickTd();
+        clickTr();
+    })
+    function changeColor(){
+        $("#area_table tr").mouseover(function(){
+            $(this).addClass('changeColor');
+        }).mouseout(function(){
+            $(this).removeClass('changeColor');
+        })
+    }
 </script>
 
 </body>
