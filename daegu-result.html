@@ -46,7 +46,6 @@
         </tbody>
     </table>
 </div>
-</div>
 
 <div class="right">
     <div id="map" style="display: ;"></div>
@@ -74,9 +73,6 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 var ps = new kakao.maps.services.Places();
 
-
-function show_result() {
-}
 
 function placesSearchCB (data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
